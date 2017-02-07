@@ -12,7 +12,7 @@ public class UserProfile implements Serializable{
 	 */
 	private static final long serialVersionUID = -3908485418372375667L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;	
 
 	@Column(name="TYPE", length=15, unique=true, nullable=false)

@@ -9,6 +9,7 @@ import edu.mum.cs.cs544.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
@@ -59,7 +60,9 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public List<User> findAllUsers() {
+
 		return dao.findAllUsers();
 	}
 
@@ -67,27 +70,55 @@ public class UserServiceImpl implements UserService {
 	public void loadDefaultUsers(){
 		System.out.println("*********************LOAD DEFAULT USERS******************");
 		try {
-			User user1 = new User();
+			User admin = new User();
+			User faculity = new User();
+			User student = new User();
 
 			UserProfile userProfile = new UserProfile();
+			UserProfile userProfileFaculity = new UserProfile();
+			UserProfile userProfileStudent = new UserProfile();
+
 			Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+			Set<UserProfile> userProfilesFaculity = new HashSet<UserProfile>();
+			Set<UserProfile> userProfilesStudent = new HashSet<UserProfile>();
+
 			userProfile.setType(UserProfileType.ADMIN.getUserProfileType());
-			userProfile.setType(UserProfileType.USER.getUserProfileType());
+			userProfileFaculity.setType(UserProfileType.FACULITY.getUserProfileType());
+			userProfileStudent.setType(UserProfileType.STUDENT.getUserProfileType());
 
-			//userProfiles.add(userProfile);
+			userProfiles.add(userProfile);
+			userProfilesFaculity.add(userProfileFaculity);
+			userProfilesStudent.add(userProfileStudent);
 
-			user1.setFirstName("Samuel");
-			user1.setEmail("saminium@gmail.com");
-			user1.setLastName("Zeru");
-			user1.setPassword("samuel");
-			user1.setUserName("samuel");
+			admin.setFirstName("Admin");
+			admin.setEmail("admin@mum.edu");
+			admin.setLastName("admin");
+			admin.setPassword("admin");
+			admin.setUserName("admin");
 
+			faculity.setFirstName("Faculity");
+			faculity.setEmail("Faculity@mum.edu");
+			faculity.setLastName("Faculity");
+			faculity.setPassword("faculity");
+			faculity.setUserName("faculity");
 
+			student.setFirstName("student");
+			student.setEmail("student@mum.edu");
+			student.setLastName("student");
+			student.setPassword("student");
+			student.setUserName("student");
 
+			admin.getUserProfiles().addAll(userProfiles);
+			faculity.getUserProfiles().addAll(userProfilesFaculity);
+			student.getUserProfiles().addAll(userProfilesStudent);
 
-			user1.getUserProfiles().addAll(userProfiles);
-			user1.setUserProfiles(userProfiles);
-			dao.save(user1);
+			admin.setUserProfiles(userProfiles);
+			faculity.setUserProfiles(userProfilesFaculity);
+			student.setUserProfiles(userProfilesStudent);
+
+			dao.save(admin);
+			dao.save(faculity);
+			dao.save(student);
 
 
 		}catch (Exception e) {

@@ -23,6 +23,33 @@
             <div class="container-fluid">
                 <div class="row">
                     <p>I have main content</p>
+                    <div class="container">
+                        <table id="usersList" class="display" width="100%">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Password</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email </th>
+
+                            </tr>
+                            </thead>
+
+                            <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Password</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section> <!-- Main Content -->
@@ -30,5 +57,33 @@
     <%@include file="../footer.jsp"%>
 </div> <!-- Site Wrapper -->
 <%@include file="../scripts.jsp"%>
+<link href="<c:url value="/resources/plugins/DataTables/jquery.dataTables.min.css" />" rel="stylesheet">
+
+<script src="<c:url value="/resources/plugins/DataTables/jquery.dataTables.min.js" />"></script>
+<script type="application/javascript">
+
+    $(document).ready(function() {
+        $('#usersList').DataTable({
+            "processing" : true,
+            "ajax" : {
+                "url" : "/user/userGrid",
+                dataSrc : ''
+            },
+            "columns" : [
+                { rows: "id"},
+                { rows: "userName"},
+                { rows: "password"},
+                { rows: "firstName"},
+                { rows: "lastName"},
+                { rows: "email"}
+
+            ]
+
+        });
+
+    });
+
+
+</script>
 </body>
 </html>
