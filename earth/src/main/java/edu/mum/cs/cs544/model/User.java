@@ -14,7 +14,7 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = -8370105923630574386L;
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
 	//@NotEmpty
@@ -38,7 +38,8 @@ public class User implements Serializable{
 	private String email;
 
 	//@NotEmpty
-	@ManyToMany(cascade = CascadeType.ALL)
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "APP_USER_USER_PROFILE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })

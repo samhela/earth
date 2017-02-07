@@ -4,6 +4,7 @@ import edu.mum.cs.cs544.model.User;
 import edu.mum.cs.cs544.model.UserProfile;
 import edu.mum.cs.cs544.service.UserProfileService;
 import edu.mum.cs.cs544.service.UserService;
+import edu.mum.cs.cs544.ws.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -53,12 +54,11 @@ public class UserController {
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("users", users);
 		model.addAttribute("loggedinuser", getPrincipal());
+		System.out.println("The list of users are : " + users.size());
 		return "user/userslist";
 	}
 
-	/**
-	 * This method will provide the medium to add a new user.
-	 */
+
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.GET)
 	public String newUser(ModelMap model) {
 		User user = new User();
@@ -67,6 +67,39 @@ public class UserController {
 		model.addAttribute("loggedinuser", getPrincipal());
 		return "user/signUp";
 	}
+
+	@RequestMapping(value = "/user/userGrid", method = RequestMethod.GET, produces = {"application/json"})
+	@ResponseBody
+	public UserResponse listUsers() {
+
+		// Retrieve all clients from the service
+		List<User> users = this.userService.findAllUsers();
+
+		// Initialize our custom client response wrapper
+		UserResponse response = new UserResponse();
+
+		// Assign the result from the service to this response
+		response.setRows(users);
+
+		// Assign the total number of records found. This is used for paging
+		//response.setRecords(String.valueOf(users.size()));
+
+		// Since our service is just a simple service for teaching purposes
+		// We didn't really do any paging. But normally your DAOs or your persistence layer should support this
+		// Assign a dummy page
+		//response.setPage("1");
+
+		// Same. Assign a dummy total pages
+		//response.setTotal("10");
+
+		// Return the response
+		// Spring will automatically convert our UserResponse as JSON object.
+		// This is triggered by the @ResponseBody annotation.
+		// It knows this because the JqGrid has set the headers to accept JSON format when it made a request
+		// Spring by default uses Jackson to convert the object to JSON
+		return response;
+	}
+
 
 	/**
 	 * This method will be called on form submission, handling POST request for

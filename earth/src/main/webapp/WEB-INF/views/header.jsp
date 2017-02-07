@@ -13,17 +13,7 @@
 			class="icon-bar"></span>
 		</a>
 		<div class="navbar-custom-menu">
-			<div class="collapse navbar-collapse navbar-right"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
 
-					<li class="active"><a href="/" /> <span class="sr-only">Cars</span></a></li>
-					<li><a href="books/books">Books</a></li>
-				</ul>
-
-
-
-			</div>
 			<ul class="nav navbar-nav">
 
 				<!-- User Account: style can be found in dropdown.less -->
@@ -46,7 +36,7 @@
 						</li>
 						<!-- Menu Footer-->
 						<li class="user-footer"><sec:authorize
-								access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_PROFESSOR')">
+								access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER') or hasRole('ROLE_PROFESSOR') or hasRole('ROLE_FACULITY') or  hasRole('ROLE_STUDENT')">
 								<c:url value="/logout" var="logoutUrl" />
 								<form action="${logoutUrl}" method="post" id="logoutForm">
 									<input type="hidden" id="csrfToken"
