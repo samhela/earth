@@ -38,7 +38,7 @@ public class User implements Serializable{
 	private String email;
 
 	//@NotEmpty
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "APP_USER_USER_PROFILE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 
              inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
@@ -93,6 +93,7 @@ public class User implements Serializable{
 	}
 
 	public Set<UserProfile> getUserProfiles() {
+		
 		return userProfiles;
 	}
 
