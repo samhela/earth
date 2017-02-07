@@ -1,9 +1,18 @@
 package edu.mum.cs.cs544.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@NamedQueries({
+		@NamedQuery(
+				name = "Course.findByCourseId",
+				query = "SELECT c FROM Course c WHERE c.courseId = :courseId"
+		),
+		@NamedQuery(
+				name = "Course.finadAllCourse",
+				query = "FROM Course"
+		)
+
+})
 @Entity
 public class Course {
 
