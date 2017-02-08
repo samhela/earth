@@ -56,7 +56,7 @@
 			<div>
 			<sec:authorize access="hasRole('ADMIN')">
 		 	<div class="well">
-		 		<a href="<c:url value='/course/addCourse' />">Add New Course</a>
+		 		<a href="<c:url value='/newCourse' />">Add New Course</a>
 		 	</div>
 	 	</sec:authorize>
 			</div>

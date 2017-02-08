@@ -57,4 +57,8 @@ public class CourseController {
         model.addAttribute("success", "Course " + course.getName() + "  registered successfully");
         return "redirect:/course/courseList";
     }
+
+
+
+
 }

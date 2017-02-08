@@ -1,13 +1,26 @@
 package edu.mum.cs.cs544.model;
 
+import javax.persistence.*;
 import java.util.Date;
+@NamedQueries({
+		/*@NamedQuery(
+				name = "AttendanceRecord.liAttendanceRecordsByStudentId",
+				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.student ast WHERE ast.student_id = :studentId"
+		),
+		@NamedQuery(
+				name = "AttendanceRecord.lisAttendanceRecordsByCourseId",
+				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.location al WHERE al.courseOffering_id = :courseOfferingId"
+		),
+		@NamedQuery(
+				name = "AttendanceRecord.lisAttendanceRecordsByLocation",
+				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.location al WHERE al.location_id = :locationId"
+		),*/
+		@NamedQuery(
+				name = "AttendanceRecord.allAttendanceRecord",
+				query = "FROM AttendanceRecord"
+		)
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+})
 @Entity
 public class AttendanceRecord {
 	@Id
@@ -26,11 +39,9 @@ public class AttendanceRecord {
 	private Location location;
 	
 	public AttendanceRecord() {
-	
 	}
 
 	public AttendanceRecord(Student student, Date date, Timeslot timeslot, Location location) {
-	
 		this.student = student;
 		this.date = date;
 		this.timeslot = timeslot;
