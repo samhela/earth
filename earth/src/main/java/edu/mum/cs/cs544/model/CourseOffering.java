@@ -2,14 +2,27 @@ package edu.mum.cs.cs544.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
+@NamedQueries({
+		@NamedQuery(
+				name = "CourseOffering.findCourseOfferingById",
+				query = "SELECT co FROM CourseOffering co WHERE co.id = :courseOfferringId"
+		),
+		@NamedQuery(
+				name = "CourseOffering.findCourseOfferingByLocation",
+				query = "SELECT co FROM CourseOffering co LEFT JOIN co.location l WHERE l.name = :locationName"
+		),
+		@NamedQuery(
+				name = "CourseOffering.findCourseOfferingByCourseName",
+				query = "SELECT co FROM CourseOffering co LEFT JOIN co.course c WHERE c.name = :courseName"
+		),
+		@NamedQuery(
+				name = "CourseOffering.allCourseOfferings",
+				query = "FROM CourseOffering"
+		)
+
+})
 @Entity
 public class CourseOffering {
 	@Id

@@ -1,8 +1,21 @@
 package edu.mum.cs.cs544.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+@NamedQueries({
+		@NamedQuery(
+				name = "Location._findByLocationId",
+				query = "SELECT l FROM Location l WHERE l.id= :locationId"
+		),
+		@NamedQuery(
+				name = "Location._findByLocationName",
+				query = "SELECT l FROM Location l WHERE l.name= :locationName"
+		),
+		@NamedQuery(
+				name = "Location.allLocations",
+				query = "FROM Location"
+		)
+})
 
 @Entity
 public class Location {

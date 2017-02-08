@@ -1,6 +1,7 @@
 package edu.mum.cs.cs544.dao;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,14 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	}
 	protected Criteria createEntityCriteria(){
 		return getSession().createCriteria(persistentClass);
+	}
+
+	protected Query createEntityQuery(String query){
+		return getSession().createQuery(query);
+	}
+
+	protected Query createNamedEntityQuery(String queryName){
+		return getSession().getNamedQuery(queryName);
 	}
 
 }

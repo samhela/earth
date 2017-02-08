@@ -1,13 +1,23 @@
 package edu.mum.cs.cs544.model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+@NamedQueries({
+		@NamedQuery(
+				name = "Timeslot.timeslotId",
+				query = "SELECT t FROM Timeslot t WHERE t.id= :timeslotId"
+		),
+		@NamedQuery(
+				name = "Location.findBySessionId",
+				query = "SELECT t FROM Timeslot t LEFT JOIN t.sessions s WHERE s.id= :sessionId"
+		),
+		@NamedQuery(
+				name = "Timeslot.allTimeslot",
+				query = "FROM Timeslot"
+		)
+})
 @Entity
 public class Timeslot {
 
@@ -23,6 +33,9 @@ public class Timeslot {
 	
 	@Temporal(TemporalType.TIME)
 	private Date endTime;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Session> sessions;
 
 	public Timeslot() {
 		
@@ -67,6 +80,12 @@ public class Timeslot {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	
-	
+
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
 }
