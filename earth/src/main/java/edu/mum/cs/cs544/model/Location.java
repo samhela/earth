@@ -1,6 +1,7 @@
 package edu.mum.cs.cs544.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @NamedQueries({
 		@NamedQuery(
@@ -25,6 +26,9 @@ public class Location {
 
 	private String locationId;
 	private String name;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<CourseOffering> courseOfferingList;
 	
 	public Location() {
 	}
@@ -57,7 +61,12 @@ public class Location {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 
-	
+	public List<CourseOffering> getCourseOfferingList() {
+		return courseOfferingList;
+	}
+
+	public void setCourseOfferingList(List<CourseOffering> courseOfferingList) {
+		this.courseOfferingList = courseOfferingList;
+	}
 }

@@ -31,7 +31,7 @@
                             Attendance</a></li>
                     </ul>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/user/userDashboard"/>"><i class="fa fa-circle-o"></i>Students
+                        <li><a href="<c:url value="/student/studentList"/>"><i class="fa fa-circle-o"></i>Students
                             List</a></li>
                     </ul>
                 </li>
@@ -42,10 +42,10 @@
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/course/list"/>"><i class="fa fa-circle-o"></i>Course List</a></li>
+                        <li><a href="<c:url value="/course/courseList"/>"><i class="fa fa-circle-o"></i>Course List</a></li>
                     </ul>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/course/offering"/>"><i class="fa fa-circle-o"></i>Course
+                        <li><a href="<c:url value="/course/offeringList"/>"><i class="fa fa-circle-o"></i>Course
                             Offerings</a></li>
                     </ul>
                 </li>
@@ -56,7 +56,25 @@
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/location/list"/>"><i class="fa fa-circle-o"></i>Locations</a></li>
+                        <li><a href="<c:url value="/location/locationList"/>"><i class="fa fa-circle-o"></i>Locations</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="/location/list">
+                        <i class="fa fa-user-md"></i> <span>Manage Timeslot</span> <i
+                            class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<c:url value="/timeslot/timeslotList"/>"><i class="fa fa-circle-o"></i>Time Slots</a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="/location/list">
+                        <i class="fa fa-user-md"></i> <span>Registration</span> <i
+                            class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="<c:url value="/registration/registrationList"/>"><i class="fa fa-circle-o"></i>Registrations</a></li>
                     </ul>
                 </li>
             </sec:authorize>
