@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by samue on 2/7/2017.
  */
-@Service("courseOffering")
+@Service("courseOfferingService")
 @Transactional
 public class CourseOfferingServiceImpl implements CourseOfferingService {
 

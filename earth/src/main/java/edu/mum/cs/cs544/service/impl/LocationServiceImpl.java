@@ -5,6 +5,7 @@ import edu.mum.cs.cs544.model.Location;
 import edu.mum.cs.cs544.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by samue on 2/7/2017.
  */
 @Service("locationService")
+@Transactional
 public class LocationServiceImpl implements LocationService{
     @Autowired
     LocationDao locationDao;

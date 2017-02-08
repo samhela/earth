@@ -12,10 +12,10 @@ import java.util.List;
 /**
  * Created by samue on 2/7/2017.
  */
-@Repository("courseOffering")
-public class CourseOfferingImpl extends AbstractDao<Integer, CourseOffering> implements CourseOfferingDao{
+@Repository("courseOfferingDao")
+public class CourseOfferingDaoImpl extends AbstractDao<Integer, CourseOffering> implements CourseOfferingDao{
 
-    static final Logger logger = LoggerFactory.getLogger(CourseOfferingImpl.class);
+    static final Logger logger = LoggerFactory.getLogger(CourseOfferingDaoImpl.class);
     @Override
     public void addCourseOffering(CourseOffering courseOffering) {
         persist(courseOffering);

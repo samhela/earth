@@ -1,13 +1,22 @@
 package edu.mum.cs.cs544.model;
 
+import javax.persistence.*;
 import java.util.Date;
+@NamedQueries({
+		@NamedQuery(
+				name = "Session.findBySessionId",
+				query = "SELECT s FROM Session s WHERE s.id = :sessionId"
+		),
+		@NamedQuery(
+				name = "Session.allSessions",
+				query = "FROM Session"
+		),
+		@NamedQuery(
+				name = "Session.findByCourseOfferingId",
+				query = "SELECT s FROM Session s LEFT JOIN s.courseOffering co WHERE co.id = :courseOfferingId"
+		)
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+})
 @Entity
 public class Session {
 

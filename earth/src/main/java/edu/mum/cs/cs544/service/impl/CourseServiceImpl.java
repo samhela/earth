@@ -37,7 +37,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<Course> allCourses() {
-        courseDao.allCourses();
+       return courseDao.allCourses();
     }
 
     @Override

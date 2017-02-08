@@ -29,7 +29,7 @@ public class LocationDaoImpl extends AbstractDao<Integer, Location> implements L
 
     @Override
     public void deleteLocation(long locationId) {
-        Location location = (Location) createNamedEntityQuery("Location.findByLocationId")
+        Location location = (Location) createNamedEntityQuery("Location._findByLocationId")
                 .setParameter("locationId", locationId)
                 .uniqueResult();
         delete(location);
@@ -43,7 +43,7 @@ public class LocationDaoImpl extends AbstractDao<Integer, Location> implements L
 
     @Override
     public Location findByLocationId(long locationId) {
-        Location location = (Location) createNamedEntityQuery("Location.findByLocationId")
+        Location location = (Location) createNamedEntityQuery("Location._findByLocationId")
                 .setParameter("locationId", locationId)
                 .uniqueResult();
         delete(location);
@@ -52,7 +52,7 @@ public class LocationDaoImpl extends AbstractDao<Integer, Location> implements L
 
     @Override
     public List<Location> findByLocationName(long locationName) {
-        List<Location> locations = (List<Location>) createNamedEntityQuery("Location.findByLocationName")
+        List<Location> locations = (List<Location>) createNamedEntityQuery("Location._findByLocationName")
                 .setParameter("locationName", locationName)
                 .list();
         return locations;

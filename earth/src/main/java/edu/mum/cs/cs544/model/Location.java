@@ -4,18 +4,17 @@ import javax.persistence.*;
 
 @NamedQueries({
 		@NamedQuery(
-				name = "Location.findByLocationId",
+				name = "Location._findByLocationId",
 				query = "SELECT l FROM Location l WHERE l.id= :locationId"
 		),
 		@NamedQuery(
-				name = "Location.findByLocationName",
+				name = "Location._findByLocationName",
 				query = "SELECT l FROM Location l WHERE l.name= :locationName"
 		),
 		@NamedQuery(
 				name = "Location.allLocations",
 				query = "FROM Location"
 		)
-
 })
 
 @Entity
