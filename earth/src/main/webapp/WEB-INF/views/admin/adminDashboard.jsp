@@ -67,16 +67,15 @@
             "processing" : true,
             "ajax" : {
                 "url" : "/user/userGrid",
+                "type": "POST",
                 dataSrc : ''
             },
-            "columns" : [
-                { rows: "id"},
-                { rows: "userName"},
-                { rows: "password"},
-                { rows: "firstName"},
-                { rows: "lastName"},
-                { rows: "email"}
-
+            "columns": [
+                { "data": "userName" },
+                { "data": "password" },
+                { "data": "firstName" },
+                { "data": "lastName" },
+                { "data": "email" },
             ]
 
         });

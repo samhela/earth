@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.cs.cs544.dao.AbstractDao;
 import edu.mum.cs.cs544.dao.FacultyDoa;
@@ -19,6 +20,7 @@ import edu.mum.cs.cs544.model.Timeslot;
 import edu.mum.cs.cs544.model.UserProfile;
 
 @Repository("facultyDao")
+@Transactional
 public class FacultyDaoImpl extends AbstractDao<Integer, Student> implements FacultyDoa {
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.mum.cs.cs544.model.Course;
 import edu.mum.cs.cs544.model.CourseOffering;
+import edu.mum.cs.cs544.model.Student;
 import edu.mum.cs.cs544.service.FacultyService;
 
 @Controller
@@ -40,4 +41,13 @@ public class FacultyController {
 		 return model;
 		 
 	 }
+
+	//list course
+	    @RequestMapping(value = "/faculty/studentList", method = RequestMethod.GET)
+	    public String listStudents(Model model){
+	        List<Student> studentList = facultyService.findAll();
+	        model.addAttribute("studentList", studentList);
+	        return "faculty/studentList";
+	    }
+
 }
