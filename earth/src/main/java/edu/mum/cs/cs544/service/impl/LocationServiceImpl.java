@@ -29,7 +29,7 @@ public class LocationServiceImpl implements LocationService{
     }
 
     @Override
-    public void deleteLocation(long locationId) {
+    public void deleteLocation(String locationId) {
         locationDao.deleteLocation(locationId);
 
     }
@@ -40,12 +40,24 @@ public class LocationServiceImpl implements LocationService{
     }
 
     @Override
-    public Location findByLocationId(long locationId) {
+    public Location findByLocationId(String locationId) {
         return locationDao.findByLocationId(locationId);
     }
 
     @Override
-    public List<Location> findByLocationName(long locationName) {
+    public List<Location> findByLocationName(String locationName) {
         return locationDao.findByLocationName(locationName);
     }
+
+	@Override
+	public Location getByLocationId(String locationId) {
+		
+		return locationDao.getByLocationId(locationId);
+	}
+
+	@Override
+	public void deleteLocationById(String locationId) {
+		locationDao.deleteLocationById(locationId);
+		
+	}
 }

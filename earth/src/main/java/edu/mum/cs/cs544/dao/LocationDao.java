@@ -10,8 +10,10 @@ import java.util.List;
 public interface LocationDao {
     public void addLocation(Location location);
     public void updateLocation(Location location);
-    public void deleteLocation(long locationId);
+    public void deleteLocation(String locationId);
     public List<Location> allLocations();
-    public Location findByLocationId(long locationId);
-    public List<Location> findByLocationName(long locationName);
+    public Location findByLocationId(String locationId);
+    public List<Location> findByLocationName(String locationName);
+	public Location getByLocationId(String locationId);
+	public void deleteLocationById(String locationId);
 }

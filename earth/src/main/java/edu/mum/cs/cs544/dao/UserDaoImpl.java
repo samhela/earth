@@ -30,7 +30,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	
 
 	@SuppressWarnings("unchecked")
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public List<User> findAllUsers() {
 		Criteria criteria = createEntityCriteria().addOrder(Order.asc("firstName"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.

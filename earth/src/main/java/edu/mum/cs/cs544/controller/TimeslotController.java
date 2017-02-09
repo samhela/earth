@@ -23,9 +23,6 @@ public class TimeslotController {
     @Autowired
     TimeslotService timeslotService;
 
-
-
-
     public Date getStartTimeAM(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);

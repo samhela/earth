@@ -2,6 +2,7 @@ package edu.mum.cs.cs544.service.impl;
 
 import edu.mum.cs.cs544.dao.CourseDao;
 import edu.mum.cs.cs544.model.Course;
+import edu.mum.cs.cs544.model.CourseOffering;
 import edu.mum.cs.cs544.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void deleteCourse(long courseId) {
+    public void deleteCourse(String courseId) {
         courseDao.deleteCourse(courseId);
     }
 
@@ -41,7 +42,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course findByCourseId(long courseId) {
+    public Course findByCourseId(String courseId) {
         return courseDao.findByCourseId(courseId);
     }
+
+	@Override
+	public List<CourseOffering> getCourseOffering(String courseId) {
+		return courseDao.getCourseOfferings(courseId);
+	}
 }

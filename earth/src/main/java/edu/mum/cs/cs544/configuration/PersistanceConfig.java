@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "edu.mum.cs544.exercise20.model" })
+//@ComponentScan({ "edu.mum.cs544.exercise20.model" })
 @PropertySource(value = {"classpath:application.properties"})
 public class PersistanceConfig {
 

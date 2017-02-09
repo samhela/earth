@@ -9,6 +9,7 @@ public enum UserProfileType implements Serializable{
 	FACULITY("FACULITY"),
 	ADMIN("ADMIN");
 	
+	
 	String userProfileType;
 	
 	private UserProfileType(String userProfileType){

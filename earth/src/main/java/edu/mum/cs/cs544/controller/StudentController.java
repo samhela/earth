@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 /**
  * Created by samue on 2/7/2017.
  */
@@ -24,9 +26,13 @@ public class StudentController{
     @Autowired
     StudentService studentService;
 
+<<<<<<< HEAD
     @Autowired
     UserService userService;
 
+=======
+    
+>>>>>>> origin/master
     @RequestMapping(value = "/student/studentList", method = RequestMethod.GET)
     public String listStudent(Model model){
         List<Student> studentList = studentService.getAllStudents();
@@ -61,11 +67,14 @@ public class StudentController{
     }
 
     @RequestMapping(value = { "/student/addStudent" }, method = RequestMethod.POST)
-    public String saveStudent(Student student, BindingResult result,
+    public String saveStudent(@Valid Student student, BindingResult result,
                            ModelMap model) {
+    	if(!result.hasErrors()){
+    		 return "student/addStudent";
+    	}
         studentService.addStudent(student);
         model.addAttribute("success", "Studnet " + student.getFirstname() + " With  Barcode "+ student.getBarcode() + " registered successfully");
-        return "student/studentList";
+        return "redirect:/student/studentList";
     }
 
     @RequestMapping(value = { "/student/addStudent" }, method = RequestMethod.GET)

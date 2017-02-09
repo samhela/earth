@@ -25,8 +25,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
-
-
 @Controller
 @SessionAttributes("roles")
 public class UserController {
@@ -57,6 +55,13 @@ public class UserController {
 		model.addAttribute("loggedinuser", getPrincipal());
 		System.out.println("The list of users are : " + users.size());
 		return "user/userslist";
+	}
+	
+	@RequestMapping(value = {"/user/attendance" })
+	public String userAttendance(ModelMap model) {
+		List<User> users = userService.findAllUsers();
+			System.out.println("The user attendance: " + users.size());
+		return "user/attendance";
 	}
 
 
@@ -225,6 +230,7 @@ public class UserController {
 
 	@RequestMapping("/")
 	public String indexHome(Model model){
+		//Filter attendace of user from the username, considering username = barcode 
 		model.addAttribute("loggedinuser", getPrincipal());
 		//if a user has a role admin
 

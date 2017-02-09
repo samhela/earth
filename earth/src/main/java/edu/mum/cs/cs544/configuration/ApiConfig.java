@@ -10,6 +10,7 @@ import java.util.Map;
  */
 @ApplicationPath("/api")
 public class ApiConfig extends Application {
+	
     @Override
     public Map<String, Object> getProperties() {
         System.out.println("*********************API method called***********************");

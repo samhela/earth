@@ -116,21 +116,24 @@
             </sec:authorize>
 
             <sec:authorize access="hasRole('FACULITY')">
-                <li class="treeview">
+             <li><a href="<c:url value="/course/courseList"/>"><i class="fa fa-circle-o"></i>View Course List</a></li>
+             <li><a href="<c:url value="/faculty/studentList"/>"><i class="fa fa-circle-o"></i>View Student List </a></li>
+            
+             <!--    <li class="treeview">
                     <a href="/user/userDashbord">
                         <i class="fa fa-user-md"></i> <span>My Courses</span> <i
                             class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="<c:url value="/course/list"/>"><i class="fa fa-circle-o"></i>Course List</a></li>
+                    </a> -->
+                 <%--    <ul class="treeview-menu">
+                        <li><a href="<c:url value="/course/courseList"/>"><i class="fa fa-circle-o"></i>Course List</a></li>
                     </ul>
                     <ul class="treeview-menu">
                         <li><a href="<c:url value="/user/attendance"/>"><i class="fa fa-circle-o"></i>Attendance</a></li>
                     </ul>
                     <ul class="treeview-menu">
                         <li><a href="<c:url value="/user/update"/>"><i class="fa fa-circle-o"></i>Update profile</a></li>
-                    </ul>
-                </li>
+                    </ul> --%>
+               <!--  </li> -->
             </sec:authorize>
 
 

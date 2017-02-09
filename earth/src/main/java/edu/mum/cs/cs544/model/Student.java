@@ -1,7 +1,17 @@
 package edu.mum.cs.cs544.model;
 
 import javax.jws.soap.SOAPBinding;
+<<<<<<< HEAD
 import javax.persistence.*;
+=======
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+
+>>>>>>> origin/master
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +34,9 @@ public class Student{
 	@GeneratedValue
 	private int id;
 
+	@NotNull
 	private String studentId;
+	@NotNull
 	private String firstname;
 	private String lastname;
 	private String barcode;
