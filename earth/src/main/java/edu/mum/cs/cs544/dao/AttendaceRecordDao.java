@@ -16,5 +16,7 @@ public interface AttendaceRecordDao {
     public List<AttendanceRecord> lisAttendanceRecordsByCourseId(long courseId);
     public List<AttendanceRecord> lisAttendanceRecordsByLocation(long locationId);
 
+    public List<AttendanceRecord> lisAttendanceRecordsByBarcode(String barcode);
+
 
 }

@@ -16,7 +16,7 @@
 			<div class="content-wrapper" style="min-height: 858px;">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Students List </h1>
+			<h1>Attendance List </h1>
 			</section><!-- Content Header (Page header) -->
 			
 			<!-- Main content -->
@@ -27,11 +27,11 @@
 	    		<thead>
 		      		<tr>
 				        <th>ID</th>
-				        <th>Student Id</th>
-				        <th>First Name</th>
-						<th>Last Name</th>
-						<th>Barcode</th>
-				        <sec:authorize access="hasRole('ADMIN') ">
+				        <th>Date</th>
+				        <th>Location</th>
+				        <th>Student</th>
+						<th>Time Slot</th>
+				        <sec:authorize access="hasRole('ADMIN')">
 				        	<th width="100"></th>
 				        </sec:authorize>
 				        <sec:authorize access="hasRole('ADMIN')">
@@ -41,18 +41,18 @@
 					</tr>
 		    	</thead>
 	    		<tbody>
-				<c:forEach items="${studentList}" var="student">
+				<c:forEach items="${attendanceRecordList}" var="attendance">
 					<tr>
-						<td>${student.id}</td>
-						<td>${student.studentId}</td>
-						<td>${student.firstname}</td>
-						<td>${student.lastname}</td>
-						<td>${student.barcode}</td>
-					    <sec:authorize access="hasRole('ADMIN')">
-							<td><a href="<c:url value='/student/edit-student-${student.id}' />" class="btn btn-success custom-width">edit</a></td>
+						<td>${attendance.id}</td>
+						<td>${attendance.date}</td>
+						<td>${attendance.location.name}</td>
+						<td>${attendance.student.firstname}</td>
+						<td>${attendance.timeslot.abbrv}</td>
+					    <sec:authorize access="hasRole('ADMIN') or hasRole('DBA')">
+							<td><a href="<c:url value='/edit-user-${user.userName}' />" class="btn btn-success custom-width">edit</a></td>
 				        </sec:authorize>
 				        <sec:authorize access="hasRole('ADMIN')">
-							<td><a href="<c:url value='/student/delete-student-${student.id}' />" class="btn btn-danger custom-width">delete</a></td>
+							<td><a href="<c:url value='/delete-user-${user.userName}' />" class="btn btn-danger custom-width">delete</a></td>
         				</sec:authorize>
 					</tr>
 				</c:forEach>
@@ -61,7 +61,7 @@
 			<div>
 			<sec:authorize access="hasRole('ADMIN')">
 		 	<div class="well">
-		 		<a href="<c:url value='/student/addStudent' />">Add New Student</a>
+		 		<a href="<c:url value='/newuser' />">Add New User</a>
 		 	</div>
 	 	</sec:authorize>
 			</div>

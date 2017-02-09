@@ -5,6 +5,7 @@ import edu.mum.cs.cs544.service.AttendanceRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -36,4 +37,17 @@ public class AttendanceRecordController {
 
         return "attendance/attendanceList";
     }
+
+    //student/myAttendace
+
+    @RequestMapping(value = "/attendance/myAttendace-{barcode}", method = RequestMethod.GET)
+    public String myAttendance(Model model, @PathVariable String barcode){
+
+        List<AttendanceRecord> attendanceRecordList = attendanceRecordService.lisAttendanceRecordsByBarcode(barcode);
+        System.out.println("---------------------------THE SIZE OF MY ATTENDANCE IS :-------------" + attendanceRecordList.size());
+        model.addAttribute("attendanceRecordList", attendanceRecordList);
+        return "attendance/attendanceList";
+    }
+
+
 }

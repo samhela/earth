@@ -57,4 +57,12 @@ public class AttendanceRecordDaoImpl extends AbstractDao<Integer, AttendanceReco
         return attendanceRecordList;*/
        return null;
     }
+
+    @Override
+    public List<AttendanceRecord> lisAttendanceRecordsByBarcode(String barcode) {
+       List<AttendanceRecord> attendanceRecordList = createNamedEntityQuery("AttendanceRecord.lisAttendanceRecordsByBarcode")
+                .setParameter("barcode", barcode)
+                .list();
+        return attendanceRecordList;
+    }
 }

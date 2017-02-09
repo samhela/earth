@@ -14,4 +14,6 @@ public interface AttendanceRecordService {
     public List<AttendanceRecord> liAttendanceRecordsByStudentId(long studentId);
     public List<AttendanceRecord> lisAttendanceRecordsByCourseId(long courseId);
     public List<AttendanceRecord> lisAttendanceRecordsByLocation(long locationId);
+
+    public List<AttendanceRecord> lisAttendanceRecordsByBarcode(String barcode);
 }

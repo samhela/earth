@@ -4,7 +4,6 @@ import edu.mum.cs.cs544.model.User;
 import edu.mum.cs.cs544.model.UserProfile;
 import edu.mum.cs.cs544.service.UserProfileService;
 import edu.mum.cs.cs544.service.UserService;
-import edu.mum.cs.cs544.ws.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -13,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -44,7 +44,7 @@ public class UserController {
 	
 	@Autowired
 	AuthenticationTrustResolver authenticationTrustResolver;
-	
+
 	
 	/**
 	 * This method will list all existing users.
@@ -70,16 +70,16 @@ public class UserController {
 
 	@RequestMapping(value = "/user/userGrid", method = RequestMethod.GET, produces = {"application/json"})
 	@ResponseBody
-	public UserResponse listUsers() {
+	public Object listUsers() {
 
 		// Retrieve all clients from the service
 		List<User> users = this.userService.findAllUsers();
 
 		// Initialize our custom client response wrapper
-		UserResponse response = new UserResponse();
+		//UserResponse response = new UserResponse();
 
 		// Assign the result from the service to this response
-		response.setRows(users);
+		//response.setRows(users);
 
 		// Assign the total number of records found. This is used for paging
 		//response.setRecords(String.valueOf(users.size()));
@@ -97,7 +97,7 @@ public class UserController {
 		// This is triggered by the @ResponseBody annotation.
 		// It knows this because the JqGrid has set the headers to accept JSON format when it made a request
 		// Spring by default uses Jackson to convert the object to JSON
-		return response;
+		return users;
 	}
 
 
@@ -242,5 +242,11 @@ public class UserController {
 	    return authenticationTrustResolver.isAnonymous(authentication);
 	}
 
+	@RequestMapping("/")
+	public String indexHome(Model model){
+		model.addAttribute("loggedinuser", getPrincipal());
+		System.out.println("Controller is called");
+		return "admin/adminDashboard";
+	}
 
 }

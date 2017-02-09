@@ -16,35 +16,46 @@
     <div class="content-wrapper" style="min-height: 858px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Course </h1>
+            <h1>Add new Student </h1>
         </section><!-- Content Header (Page header) -->
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="course" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="student" class="form-horizontal">
                         <form:input type="hidden" path="id" id="id"/>
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="courseId">Course Id</label>
+                                <label class="col-md-3 control-lable" for="studentId">Student Id</label>
                                 <div class="col-md-4">
-                                    <form:input type="text" path="courseId" id="courseId" class="form-control input-sm"/>
+                                    <form:input type="text" path="studentId" id="studentId" class="form-control input-sm"/>
                                     <div class="has-error">
-                                        <form:errors path="courseId" class="help-inline"/>
+                                        <form:errors path="studentId" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
+                        <div class="form-group col-md-12">
+                            <label class="col-md-3 control-lable" for="firstname">First Name</label>
+                            <div class="col-md-4">
+                                <form:input type="text" path="firstname" id="firstname" class="form-control input-sm" />
+                                <div class="has-error">
+                                    <form:errors path="firstname" class="help-inline"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="name">Course Name</label>
+                                <label class="col-md-3 control-lable" for="lastname">First Name</label>
                                 <div class="col-md-4">
-                                    <form:input type="text" path="name" id="name" class="form-control input-sm" />
+                                    <form:input type="text" path="lastname" id="lastname" class="form-control input-sm" />
                                     <div class="has-error">
-                                        <form:errors path="name" class="help-inline"/>
+                                        <form:errors path="lastname" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -54,11 +65,11 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="description">Description</label>
+                                <label class="col-md-3 control-lable" for="barcode">Description</label>
                                 <div class="col-md-4">
-                                    <form:input type="text" path="description" id="description" class="form-control input-sm" />
+                                    <form:input type="text" path="barcode" id="barcode" class="form-control input-sm" />
                                     <div class="has-error">
-                                        <form:errors path="description" class="help-inline"/>
+                                        <form:errors path="barcode" class="help-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -70,10 +81,10 @@
                             <div class="form-actions floatRight">
                                 <c:choose>
                                     <c:when test="${edit}">
-                                        <input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/user/list' />">Cancel</a>
+                                        <input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/student/studentList' />">Cancel</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/user/list' />">Cancel</a>
+                                        <input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/student/studentList' />">Cancel</a>
                                     </c:otherwise>
                                 </c:choose>
                             </div>

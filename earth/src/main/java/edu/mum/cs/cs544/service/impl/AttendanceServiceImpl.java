@@ -43,4 +43,8 @@ public class AttendanceServiceImpl implements AttendanceRecordService {
     public List<AttendanceRecord> lisAttendanceRecordsByLocation(long locationId) {
         return attendaceRecordDao.lisAttendanceRecordsByLocation(locationId);
     }
+
+    public List<AttendanceRecord> lisAttendanceRecordsByBarcode(String barcode){
+        return attendaceRecordDao.lisAttendanceRecordsByBarcode(barcode);
+    }
 }
