@@ -13,9 +13,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by samue on 2/7/2017.
@@ -25,6 +24,7 @@ public class StudentController{
 
     @Autowired
     StudentService studentService;
+
 
     @Autowired
     UserService userService;
