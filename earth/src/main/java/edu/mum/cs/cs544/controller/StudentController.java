@@ -26,13 +26,9 @@ public class StudentController{
     @Autowired
     StudentService studentService;
 
-<<<<<<< HEAD
     @Autowired
     UserService userService;
 
-=======
-    
->>>>>>> origin/master
     @RequestMapping(value = "/student/studentList", method = RequestMethod.GET)
     public String listStudent(Model model){
         List<Student> studentList = studentService.getAllStudents();

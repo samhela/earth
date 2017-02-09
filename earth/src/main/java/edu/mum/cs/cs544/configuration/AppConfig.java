@@ -13,11 +13,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import edu.mum.cs.cs544.aop.ProjectAspect;
+
 
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = "edu.mum.cs.cs544")
 public class AppConfig extends WebMvcConfigurerAdapter {
+	
+	@Bean
+	public ProjectAspect propertyChangeTracker(){
+		return new ProjectAspect();
+	}
 
 	@Bean
 	public ViewResolver viewResolver() {

@@ -1,19 +1,13 @@
 package edu.mum.cs.cs544.model;
 
-import javax.jws.soap.SOAPBinding;
-<<<<<<< HEAD
-import javax.persistence.*;
-=======
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-
->>>>>>> origin/master
-import java.util.HashSet;
-import java.util.Set;
 
 
 @NamedQueries({
