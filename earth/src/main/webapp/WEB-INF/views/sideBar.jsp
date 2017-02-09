@@ -20,7 +20,7 @@
             <sec:authorize access="hasRole('ADMIN')">
                 <li class="treeview">
                     <a href="/user/userDashbord">
-                        <i class="fa fa-user-md"></i> <span>Manage Users</span> <i
+                        <i class="fa fa-user-md"></i> <a href="<c:url value="/student"/>"><span>Manage Users</span> <i
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">

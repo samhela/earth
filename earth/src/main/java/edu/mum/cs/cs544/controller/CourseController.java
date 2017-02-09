@@ -4,6 +4,7 @@ import edu.mum.cs.cs544.model.Course;
 import edu.mum.cs.cs544.service.CourseOfferingService;
 import edu.mum.cs.cs544.service.CourseService;
 import edu.mum.cs.cs544.service.UserService;
+import edu.mum.cs.cs544.ws.CourseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -58,6 +60,16 @@ public class CourseController {
         return "redirect:/course/courseList";
     }
 
+    @RequestMapping(value = "/user/courseGrid", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseBody
+    public CourseResponse listCourses() {
+
+        List<Course> courses = this.courseService.allCourses();
+        CourseResponse response = new CourseResponse();
+
+        response.setRows(courses);
+        return response;
+    }
 
 
 

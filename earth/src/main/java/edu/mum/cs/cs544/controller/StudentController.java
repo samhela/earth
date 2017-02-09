@@ -1,15 +1,17 @@
 package edu.mum.cs.cs544.controller;
 
 import edu.mum.cs.cs544.model.Student;
+import edu.mum.cs.cs544.model.User;
+import edu.mum.cs.cs544.model.UserProfile;
 import edu.mum.cs.cs544.service.StudentService;
+import edu.mum.cs.cs544.service.UserService;
+import edu.mum.cs.cs544.ws.StudentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +23,9 @@ public class StudentController{
 
     @Autowired
     StudentService studentService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping(value = "/student/studentList", method = RequestMethod.GET)
     public String listStudent(Model model){
@@ -72,6 +77,61 @@ public class StudentController{
         return "student/addStudent";
     }
 
+    @RequestMapping(value = { "/student/addStudent1" }, method = RequestMethod.POST)
+    public String saveStudent(@RequestParam("txtStudentId") String studentId, @RequestParam("txtFirstName") String firstName,
+                              @RequestParam("txtLastName") String lastName,  @RequestParam("txtBarcode") String barcode,
+                              @RequestParam("txtUserName") String userName,
+                              @RequestParam("txtEmail") String email, @RequestParam("txtPassword") String password){
+
+
+        System.out.println("NEW USER LAST NAME: " + lastName);
+
+
+        Student student = new Student(studentId, firstName, lastName, barcode);
+
+        User user = new User();
+
+        UserProfile userProfileStudent = new UserProfile();
+
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+
+      /*  Set<UserProfile> userProfilesStudent = new HashSet<UserProfile>();
+        userProfileStudent.getType();
+
+        userProfilesStudent.add(userProfileStudent);
+
+        user.getUserProfiles().addAll(userProfilesStudent);
+        user.setUserProfiles(userProfilesStudent);*/
+
+
+
+        userService.saveUser(user);
+        studentService.addStudent(student);
+
+        return "/student/studentList";
+    }
+
+    @RequestMapping(value = "/student/studentGrid", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseBody
+    public StudentResponse listStudent() {
+
+        List<Student> students = studentService.getAllStudents();
+        StudentResponse response = new StudentResponse();
+
+        response.setRows(students);
+        return response;
+    }
+
+    @RequestMapping("/student")
+    public String studentIndex(Model model){
+        //model.addAttribute("loggedinuser", getPrincipal());
+        System.out.println("Controller is called");
+        return "student/studentDashboard";
+    }
 
 
 }

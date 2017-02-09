@@ -1,5 +1,7 @@
 package edu.mum.cs.cs544.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -17,28 +19,28 @@ public class User implements Serializable{
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	//@NotEmpty
+	@NotEmpty
 	@Column(name="USER_NAME", unique=true, nullable=false)
 	private String userName;
 	
-	//@NotEmpty
+	@NotEmpty
 	@Column(name="PASSWORD", nullable=false)
 	private String password;
 		
-	//@NotEmpty
+	@NotEmpty
 	@Column(name="FIRST_NAME", nullable=false)
 	private String firstName;
 
-	//@NotEmpty
+	@NotEmpty
 	@Column(name="LAST_NAME", nullable=false)
 	private String lastName;
 
-	//@NotEmpty
+	@NotEmpty
 	@Column(name="EMAIL", nullable=false)
 	private String email;
 
-	//@NotEmpty
 
+	//@NotEmpty
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "APP_USER_USER_PROFILE", 
              joinColumns = { @JoinColumn(name = "USER_ID") }, 

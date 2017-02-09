@@ -4,6 +4,7 @@ import edu.mum.cs.cs544.model.User;
 import edu.mum.cs.cs544.model.UserProfile;
 import edu.mum.cs.cs544.service.UserProfileService;
 import edu.mum.cs.cs544.service.UserService;
+import edu.mum.cs.cs544.ws.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.authentication.AuthenticationTrustResolver;
@@ -70,34 +71,13 @@ public class UserController {
 
 	@RequestMapping(value = "/user/userGrid", method = RequestMethod.GET, produces = {"application/json"})
 	@ResponseBody
-	public Object listUsers() {
+	public UserResponse listUsers() {
 
-		// Retrieve all clients from the service
 		List<User> users = this.userService.findAllUsers();
+		UserResponse response = new UserResponse();
 
-		// Initialize our custom client response wrapper
-		//UserResponse response = new UserResponse();
-
-		// Assign the result from the service to this response
-		//response.setRows(users);
-
-		// Assign the total number of records found. This is used for paging
-		//response.setRecords(String.valueOf(users.size()));
-
-		// Since our service is just a simple service for teaching purposes
-		// We didn't really do any paging. But normally your DAOs or your persistence layer should support this
-		// Assign a dummy page
-		//response.setPage("1");
-
-		// Same. Assign a dummy total pages
-		//response.setTotal("10");
-
-		// Return the response
-		// Spring will automatically convert our UserResponse as JSON object.
-		// This is triggered by the @ResponseBody annotation.
-		// It knows this because the JqGrid has set the headers to accept JSON format when it made a request
-		// Spring by default uses Jackson to convert the object to JSON
-		return users;
+		response.setRows(users);
+		return response;
 	}
 
 
@@ -228,6 +208,7 @@ public class UserController {
 
 		if (principal instanceof UserDetails) {
 			userName = ((UserDetails)principal).getUsername();
+
 		} else {
 			userName = principal.toString();
 		}
@@ -245,6 +226,11 @@ public class UserController {
 	@RequestMapping("/")
 	public String indexHome(Model model){
 		model.addAttribute("loggedinuser", getPrincipal());
+		//if a user has a role admin
+
+		//if not it will return  another
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 		System.out.println("Controller is called");
 		return "admin/adminDashboard";
 	}
