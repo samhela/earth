@@ -70,12 +70,12 @@
                 dataSrc : ''
             },
             "columns" : [
-                { rows: 'id'},
-                { rows: 'userName'},
-                { rows: 'password'},
-                { rows: 'firstName'},
-                { rows: 'lastName'},
-                { rows: 'email'}
+                { rows: "id"},
+                { rows: "userName"},
+                { rows: "password"},
+                { rows: "firstName"},
+                { rows: "lastName"},
+                { rows: "email"}
 
             ]
 
