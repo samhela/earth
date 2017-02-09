@@ -5,6 +5,7 @@ import edu.mum.cs.cs544.model.CourseOffering;
 import edu.mum.cs.cs544.service.CourseOfferingService;
 import edu.mum.cs.cs544.service.CourseService;
 import edu.mum.cs.cs544.service.UserService;
+import edu.mum.cs.cs544.ws.CourseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -61,11 +63,24 @@ public class CourseController {
         return "redirect:/course/courseList";
     }
 
+<<<<<<< HEAD
+    @RequestMapping(value = "/user/courseGrid", method = RequestMethod.GET, produces = {"application/json"})
+    @ResponseBody
+    public CourseResponse listCourses() {
+
+        List<Course> courses = this.courseService.allCourses();
+        CourseResponse response = new CourseResponse();
+
+        response.setRows(courses);
+        return response;
+    }
+=======
     @RequestMapping(value = { "/delete-course/{courseId}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String courseId) {
 		courseService.deleteCourse(courseId);
 		return "redirect:/course/courseList";
 	}
+>>>>>>> origin/master
 
     @RequestMapping(value="/edit-course/{id}",method=RequestMethod.GET)
     public String editCourse(@PathVariable("id") String id, Model model){

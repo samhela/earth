@@ -22,74 +22,52 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <form:form method="POST" modelAttribute="student" class="form-horizontal">
-                        <form:input type="hidden" path="id" id="id"/>
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="studentId">Student Id</label>
-                                <div class="col-md-4">
-                                    <form:input type="text" path="studentId" id="studentId" class="form-control input-sm"/>
-                                    <div class="has-error">
-                                        <form:errors path="studentId" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="row col-md-8">
+                    <!-- Account Information -->
+                    <form:form action="/student/addStudent1" method="post"  data-toggle="validator" >
+                        <input type="hidden" id="userId" name="userId" />
+                        <div class="form-group">
+                            <label for="txtStudentId">Student Id </label>
+                            <input type="text" class="form-control" name="txtStudentId" id="txtStudentId" placeholder="Student Id" required>
                         </div>
-
-                        <div class="row">
-                        <div class="form-group col-md-12">
-                            <label class="col-md-3 control-lable" for="firstname">First Name</label>
-                            <div class="col-md-4">
-                                <form:input type="text" path="firstname" id="firstname" class="form-control input-sm" />
-                                <div class="has-error">
-                                    <form:errors path="firstname" class="help-inline"/>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="txtFirstName">First Name</label>
+                            <input type="text" class="form-control" name="txtFirstName" id="txtFirstName"  placeholder="Enter First Name" required>
                         </div>
-                    </div>
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="lastname">First Name</label>
-                                <div class="col-md-4">
-                                    <form:input type="text" path="lastname" id="lastname" class="form-control input-sm" />
-                                    <div class="has-error">
-                                        <form:errors path="lastname" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="txtLastName">Last name </label>
+                            <input type="text" class="form-control" name="txtLastName" id="txtLastName" placeholder="Enter LastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtBarcode">Barcode</label>
+                            <input type="text" class="form-control" name="txtBarcode" id="txtBarcode" placeholder="Enter Barcode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDescription">Description</label>
+                            <input type="text" class="form-control" name="txtDescription" id="txtDescription" placeholder="Enter Description" required>
                         </div>
 
 
-
-                        <div class="row">
-                            <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="barcode">Description</label>
-                                <div class="col-md-4">
-                                    <form:input type="text" path="barcode" id="barcode" class="form-control input-sm" />
-                                    <div class="has-error">
-                                        <form:errors path="barcode" class="help-inline"/>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <label for="txtUserName">User Name</label>
+                            <input type="text" class="form-control" name="txtUserName" id="txtUserName" placeholder="Enter User Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPassword">Password</label>
+                            <input type="password" class="form-control" name="txtPassword" id="txtPassword" pattern="^(?=.{6,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).*$" placeholder="Enter Passord" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail">Email</label>
+                            <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email" required>
                         </div>
 
 
+                        <button type="button" class="btn btn-default" >Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save" />
 
-                        <div class="row">
-                            <div class="form-actions floatRight">
-                                <c:choose>
-                                    <c:when test="${edit}">
-                                        <input type="submit" value="Update" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/student/studentList' />">Cancel</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <input type="submit" value="Register" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/student/studentList' />">Cancel</a>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
-                        </div>
+
                     </form:form>
+                        <!-- Account information -->
                 </div>
             </div>
         </section><!-- Main content -->
