@@ -48,6 +48,8 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.20" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: aspectj:aspectjrt:1.5.3" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.7.4" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-client:2.22.2" />
           <element id="library" level="project" name="Maven: javax.ws.rs:javax.ws.rs-api:2.0.1" />
           <element id="library" level="project" name="Maven: org.glassfish.jersey.core:jersey-common:2.22.2" />
