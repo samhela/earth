@@ -31,7 +31,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void deleteCourse(long courseId) {
+    public void deleteCourse(String courseId) {
         courseDao.deleteCourse(courseId);
     }
 
@@ -41,7 +41,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public Course findByCourseId(long courseId) {
+    public Course findByCourseId(String courseId) {
         return courseDao.findByCourseId(courseId);
     }
 }

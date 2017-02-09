@@ -11,9 +11,9 @@ public interface CourseDao  {
 
     public void addCourse(Course course);
     public void updateCourse(Course course);
-    public void deleteCourse(long courseId);
+    public void deleteCourse(String courseId);
     public List<Course> allCourses();
-    public Course findByCourseId(long courseId);
+    public Course findByCourseId(String courseId);
 
 
 }

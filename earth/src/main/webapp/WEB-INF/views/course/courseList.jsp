@@ -26,7 +26,7 @@
 			<table class="table table-hover">
 	    		<thead>
 		      		<tr>
-				        <th>ID</th>
+				        <th>SN</th>
 				        <th>Course Name</th>
 				        <th>Description</th>
 				        <sec:authorize access="hasRole('ADMIN') ">
@@ -41,13 +41,14 @@
 	    		<tbody>
 				<c:forEach items="${courseList}" var="course">
 					<tr>
+					<td>${course.id }</td>
 						<td>${course.name}</td>
-						<td>${user.description}</td>
+						<td>${course.description}</td>
 					    <sec:authorize access="hasRole('ADMIN')">
-							<td><a href="<c:url value='/edit-course-${course.name}' />" class="btn btn-success custom-width">edit</a></td>
+							<td><a href="<c:url value='/edit-course/${course.courseId}' />" class="btn btn-success custom-width">edit</a></td>
 				        </sec:authorize>
 				        <sec:authorize access="hasRole('ADMIN')">
-							<td><a href="<c:url value='/delete-course-${course.name}' />" class="btn btn-danger custom-width">delete</a></td>
+							<td><a href="<c:url value='/delete-course/${course.courseId}' />" class="btn btn-danger custom-width">delete</a></td>
         				</sec:authorize>
 					</tr>
 				</c:forEach>

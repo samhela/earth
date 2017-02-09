@@ -57,6 +57,13 @@ public class UserController {
 		System.out.println("The list of users are : " + users.size());
 		return "user/userslist";
 	}
+	
+	@RequestMapping(value = {"/user/attendance" })
+	public String userAttendance(ModelMap model) {
+		List<User> users = userService.findAllUsers();
+			System.out.println("The user attendance: " + users.size());
+		return "user/attendance";
+	}
 
 
 	@RequestMapping(value = { "/newuser" }, method = RequestMethod.GET)

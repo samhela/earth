@@ -28,7 +28,7 @@ public class  CourseDaoImpl extends AbstractDao<Integer, Course> implements Cour
     }
 
     @Override
-    public void deleteCourse(long courseId) {
+    public void deleteCourse(String courseId) {
         Course course = (Course) createNamedEntityQuery("Course.findByCourseId")
                 .setParameter("courseId", courseId)
                 .uniqueResult();
@@ -42,7 +42,7 @@ public class  CourseDaoImpl extends AbstractDao<Integer, Course> implements Cour
     }
 
     @Override
-    public Course findByCourseId(long courseId) {
+    public Course findByCourseId(String courseId) {
 
         Course course = (Course) createNamedEntityQuery("Course.findByCourseId")
                 .setParameter("courseId", courseId)

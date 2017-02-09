@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,6 +48,7 @@ public class CourseController {
 
         return "course/addCourse";
     }
+   
 
     //add course form post
     //Need validation at this point
@@ -58,7 +60,22 @@ public class CourseController {
         return "redirect:/course/courseList";
     }
 
+    @RequestMapping(value = { "/delete-course/{courseId}" }, method = RequestMethod.GET)
+	public String deleteUser(@PathVariable String courseId) {
+		courseService.deleteCourse(courseId);
+		return "redirect:/course/courseList";
+	}
 
-
-
+    @RequestMapping(value="/edit-course/{id}",method=RequestMethod.GET)
+    public String editCourse(@PathVariable("id") String id, Model model){
+        model.addAttribute("course", this.courseService.findByCourseId(id));
+		model.addAttribute("edit", true);
+	    return "course/addCourse";
+    }
+    @RequestMapping(value="/edit-course/{id}",method=RequestMethod.POST)
+    public String updateCourse(@PathVariable("id") String id, Course course){
+//    	course = this.courseService.findByCourseId(id);
+    	courseService.updateCourse(course);
+	    return "redirect:/course/courseList";
+    }
 }
