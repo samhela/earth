@@ -16,7 +16,7 @@
 			<div class="content-wrapper" style="min-height: 858px;">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
-			<h1>Courses List </h1>
+			<h1>Course Offerings List </h1>
 			</section><!-- Content Header (Page header) -->
 			
 			<!-- Main content -->
@@ -26,9 +26,10 @@
 			<table class="table table-hover">
 	    		<thead>
 		      		<tr>
-				        <th>ID</th>
-				        <th>Course Name</th>
-				        <th>Description</th>
+				        <th>CousreOffering ID</th>
+				        <th>Start Date</th>
+				        <th>End Date</th>
+				        
 				        <sec:authorize access="hasRole('ADMIN') ">
 				        	<th width="100"></th>
 				        </sec:authorize>
@@ -39,26 +40,27 @@
 					</tr>
 		    	</thead>
 	    		<tbody>
-				<c:forEach items="${courseList}" var="course">
+			 <c:forEach items="${courseOfferings}" var="course">
 					<tr>
-						<td>${course.name}</td>
-						<td>${user.description}</td>
-					    <sec:authorize access="hasRole('ADMIN')">
+						<td>${course.courseOfferingId}</td>
+						<td>${course.startDate}</td>
+						<td>${course.endDate }</td>
+					    <%-- <sec:authorize access="hasRole('ADMIN')">
 							<td><a href="<c:url value='/edit-course-${course.name}' />" class="btn btn-success custom-width">edit</a></td>
 				        </sec:authorize>
 				        <sec:authorize access="hasRole('ADMIN')">
 							<td><a href="<c:url value='/delete-course-${course.name}' />" class="btn btn-danger custom-width">delete</a></td>
-        				</sec:authorize>
+        				</sec:authorize> --%>
 					</tr>
 				</c:forEach>
 	    		</tbody>
 	    	</table>
 			<div>
-			<sec:authorize access="hasRole('ADMIN')">
+			
 		 	<div class="well">
-		 		<a href="<c:url value='/newCourse' />">Add New Course</a>
+		 		<a href="<c:url value='/course/courseList' />">Back to Course</a>
 		 	</div>
-	 	</sec:authorize>
+ 
 			</div>
 			</div>
 			</section><!-- Main content -->

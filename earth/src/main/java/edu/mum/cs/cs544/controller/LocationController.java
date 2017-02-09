@@ -74,4 +74,13 @@ public class LocationController {
        	locationService.updateLocation(location);
    	    return "redirect:/location/locationList";
        }
+       @RequestMapping(value="/view-location/{courseOfferingId}",method=RequestMethod.GET)
+       public String viewLocation(@PathVariable("courseOfferingId") String courseOfferingId, Model model){
+        model.addAttribute("location", this.locationService.getByLocationId(courseOfferingId));
+        
+   		model.addAttribute("edit", true);
+   		
+   		
+   	    return "location/addLocation";
+       }
 }

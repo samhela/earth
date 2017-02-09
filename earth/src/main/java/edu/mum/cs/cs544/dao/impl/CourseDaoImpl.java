@@ -3,6 +3,11 @@ package edu.mum.cs.cs544.dao.impl;
 import edu.mum.cs.cs544.dao.AbstractDao;
 import edu.mum.cs.cs544.dao.CourseDao;
 import edu.mum.cs.cs544.model.Course;
+import edu.mum.cs.cs544.model.CourseOffering;
+import edu.mum.cs.cs544.model.Location;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -49,4 +54,25 @@ public class  CourseDaoImpl extends AbstractDao<Integer, Course> implements Cour
                 .uniqueResult();
         return course;
     }
+
+	@Override
+	public List<CourseOffering> getCourseOfferings(String courseId) {
+		 Course course = (Course) createNamedEntityQuery("Course.findByCourseId")
+	               .setParameter("courseId", courseId)
+	                .uniqueResult();
+		 int id = course.getId();
+		 System.out.println("------------------------------>>>"+id);
+		 
+		 String courseName = course.getName();
+		 System.out.println(courseName);
+		 
+		List<CourseOffering> courseOfferings = createNamedEntityQuery("CourseOffering.findCourseOfferingByCourseName")
+				.setParameter("courseName", courseName)
+				.list();
+		
+	
+		 
+		 
+		return courseOfferings;
+	}
 }

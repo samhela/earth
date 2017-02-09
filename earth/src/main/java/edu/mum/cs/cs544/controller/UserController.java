@@ -24,8 +24,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
-
-
 @Controller
 @SessionAttributes("roles")
 public class UserController {
@@ -251,6 +249,7 @@ public class UserController {
 
 	@RequestMapping("/")
 	public String indexHome(Model model){
+		//Filter attendace of user from the username, considering username = barcode 
 		model.addAttribute("loggedinuser", getPrincipal());
 		System.out.println("Controller is called");
 		return "admin/adminDashboard";

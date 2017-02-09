@@ -50,6 +50,13 @@
 				        <sec:authorize access="hasRole('ADMIN')">
 							<td><a href="<c:url value='/delete-course/${course.courseId}' />" class="btn btn-danger custom-width">delete</a></td>
         				</sec:authorize>
+        				<sec:authorize access="hasRole('ADMIN')">
+							<td><a href="<c:url value='/courseOffering/courseOfferingList/${course.courseId}' />" class="btn btn-success custom-width">view courseOfferings</a></td>
+				        </sec:authorize>
+        				 <sec:authorize access="hasRole('FACULITY')">
+							<td><a href="<c:url value='/courseOffering/courseOfferingList/${course.courseId}' />" class="btn btn-success custom-width">view courseOfferings</a></td>
+				        </sec:authorize>
+			
 					</tr>
 				</c:forEach>
 	    		</tbody>

@@ -1,6 +1,7 @@
 package edu.mum.cs.cs544.controller;
 
 import edu.mum.cs.cs544.model.Course;
+import edu.mum.cs.cs544.model.CourseOffering;
 import edu.mum.cs.cs544.service.CourseOfferingService;
 import edu.mum.cs.cs544.service.CourseService;
 import edu.mum.cs.cs544.service.UserService;
@@ -77,5 +78,15 @@ public class CourseController {
 //    	course = this.courseService.findByCourseId(id);
     	courseService.updateCourse(course);
 	    return "redirect:/course/courseList";
+    }
+    
+    @RequestMapping(value="/courseOffering/courseOfferingList/{courseId}",method=RequestMethod.GET)
+    public String listCourseOffering(@PathVariable("courseId") String courseId, Model model){
+//    	course = this.courseService.findByCourseId(id);
+    	List<CourseOffering> courseOfferings = this.courseService.getCourseOffering(courseId);
+    	model.addAttribute("courseOfferings",courseOfferings);
+    	System.out.println("---------------list ---called------");
+    	
+	    return "course/courseOfferingList";
     }
 }
