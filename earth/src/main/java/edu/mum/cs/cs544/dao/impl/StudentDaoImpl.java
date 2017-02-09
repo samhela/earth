@@ -40,7 +40,7 @@ public class StudentDaoImpl  extends  AbstractDao<Integer, Student> implements S
     @Override
     public Student getStudent(long Id) {
         Student student = (Student) createNamedEntityQuery("Student.findByStudentId")
-                .setParameter("courseId", Id)
+                .setLong("studentId", Id)
                 .uniqueResult();
         return student;
 
@@ -50,7 +50,7 @@ public class StudentDaoImpl  extends  AbstractDao<Integer, Student> implements S
     @Override
     public void deleteStudent(long Id) {
         Student student = (Student) createNamedEntityQuery("Student.findByStudentId")
-                .setParameter("courseId", Id)
+                .setLong("studentId", Id)
                 .uniqueResult();
         delete(student);
     }

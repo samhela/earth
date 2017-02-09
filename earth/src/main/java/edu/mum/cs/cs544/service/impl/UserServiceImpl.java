@@ -74,21 +74,35 @@ public class UserServiceImpl implements UserService {
 			User faculity = new User();
 			User student = new User();
 
+			//Test User for student id 1
+			User student1 = new User();
+
+
 			UserProfile userProfile = new UserProfile();
 			UserProfile userProfileFaculity = new UserProfile();
 			UserProfile userProfileStudent = new UserProfile();
+
+			UserProfile userProfileStudent1 = new UserProfile();
 
 			Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 			Set<UserProfile> userProfilesFaculity = new HashSet<UserProfile>();
 			Set<UserProfile> userProfilesStudent = new HashSet<UserProfile>();
 
+			Set<UserProfile> userProfilesStudent1 = new HashSet<UserProfile>();
+
 			userProfile.setType(UserProfileType.ADMIN.getUserProfileType());
 			userProfileFaculity.setType(UserProfileType.FACULITY.getUserProfileType());
 			userProfileStudent.setType(UserProfileType.STUDENT.getUserProfileType());
 
+			userProfileStudent1.setType(UserProfileType.STUDENT.getUserProfileType());
+
+
+
 			userProfiles.add(userProfile);
 			userProfilesFaculity.add(userProfileFaculity);
 			userProfilesStudent.add(userProfileStudent);
+
+			userProfilesStudent1.add(userProfileStudent1);
 
 			admin.setFirstName("Admin");
 			admin.setEmail("admin@mum.edu");
@@ -108,17 +122,29 @@ public class UserServiceImpl implements UserService {
 			student.setPassword("student");
 			student.setUserName("student");
 
+			student1.setFirstName("student1");
+			student1.setEmail("student1@mum.edu");
+			student1.setLastName("student1");
+			student1.setPassword("1100107816179");
+			student1.setUserName("1100107816179");
+
 			admin.getUserProfiles().addAll(userProfiles);
 			faculity.getUserProfiles().addAll(userProfilesFaculity);
 			student.getUserProfiles().addAll(userProfilesStudent);
+
+			student1.getUserProfiles().addAll(userProfilesStudent1);
 
 			admin.setUserProfiles(userProfiles);
 			faculity.setUserProfiles(userProfilesFaculity);
 			student.setUserProfiles(userProfilesStudent);
 
+			student1.setUserProfiles(userProfilesStudent1);
+/*
 			dao.save(admin);
 			dao.save(faculity);
-			dao.save(student);
+			dao.save(student);*/
+
+			dao.save(student1);
 
 
 		}catch (Exception e) {

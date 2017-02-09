@@ -1,16 +1,19 @@
 package edu.mum.cs.cs544.model;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @NamedQueries({
 		@NamedQuery(
 				name = "Student.findByStudentId",
-				query = "SELECT s FROM Student s WHERE s.studentId = :studentId"
+				query = "SELECT s FROM Student s WHERE s.id = :studentId"
 		),
 		@NamedQuery(
 				name = "Student.finadAllStudent",
@@ -19,7 +22,7 @@ import javax.persistence.NamedQuery;
 
 })
 @Entity
-public class Student {
+public class Student{
 
 	@Id
 	@GeneratedValue
@@ -40,6 +43,16 @@ public class Student {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.barcode = barcode;
+
+		/*setUserName(studentId);
+		setPassword(studentId);
+		UserProfile userProfile = new UserProfile();
+		Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+		userProfile.setType(UserProfileType.STUDENT.getUserProfileType());
+		setUserProfiles(userProfiles);*/
+
+
+
 	}
 
 	public int getId() {

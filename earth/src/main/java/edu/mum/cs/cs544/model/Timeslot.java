@@ -1,6 +1,9 @@
 package edu.mum.cs.cs544.model;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +41,8 @@ public class Timeslot {
 	private List<Session> sessions;
 
 	public Timeslot() {
+
+
 		
 	}
 	
@@ -48,6 +53,7 @@ public class Timeslot {
 		this.beginTime = beginTime;
 		this.endTime = endTime;
 	}
+
 
 	public String getAbbrv() {
 		return abbrv;

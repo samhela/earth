@@ -5,6 +5,8 @@ import edu.mum.cs.cs544.dao.TimeslotDao;
 import edu.mum.cs.cs544.model.Timeslot;
 import org.springframework.stereotype.Repository;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,9 +15,11 @@ import java.util.List;
 @Repository("timeSlot")
 public class TimeslotDaoImpl extends AbstractDao<Integer, Timeslot> implements TimeslotDao {
 
+
+
     @Override
     public void addTimeslot(Timeslot timeslot) {
-        persist(timeslot);
+       persist(timeslot);
     }
 
     @Override

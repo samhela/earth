@@ -3,7 +3,7 @@ package edu.mum.cs.cs544.model;
 import javax.persistence.*;
 import java.util.Date;
 @NamedQueries({
-		/*@NamedQuery(
+	/*	@NamedQuery(
 				name = "AttendanceRecord.liAttendanceRecordsByStudentId",
 				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.student ast WHERE ast.student_id = :studentId"
 		),
@@ -11,10 +11,11 @@ import java.util.Date;
 				name = "AttendanceRecord.lisAttendanceRecordsByCourseId",
 				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.location al WHERE al.courseOffering_id = :courseOfferingId"
 		),
+		*/
 		@NamedQuery(
-				name = "AttendanceRecord.lisAttendanceRecordsByLocation",
-				query = "SELECT ar FROM AttendanceRecord ar LEFT JOIN ar.location al WHERE al.location_id = :locationId"
-		),*/
+				name = "AttendanceRecord.lisAttendanceRecordsByBarcode",
+				query = "SELECT ar FROM AttendanceRecord ar JOIN ar.student s WHERE s.barcode = :barcode"
+		),
 		@NamedQuery(
 				name = "AttendanceRecord.allAttendanceRecord",
 				query = "FROM AttendanceRecord"

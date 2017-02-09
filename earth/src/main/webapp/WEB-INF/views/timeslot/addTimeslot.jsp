@@ -16,21 +16,21 @@
     <div class="content-wrapper" style="min-height: 858px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>Course </h1>
+            <h1>Add new timeslot </h1>
         </section><!-- Content Header (Page header) -->
 
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <form:form method="POST" modelAttribute="course" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="timeslot" class="form-horizontal">
                         <form:input type="hidden" path="id" id="id"/>
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-3 control-lable" for="courseId">Course Id</label>
+                                <label class="col-md-3 control-lable" for="timeslotId">Abrevation</label>
                                 <div class="col-md-4">
-                                    <form:input type="text" path="courseId" id="courseId" class="form-control input-sm"/>
+                                    <form:input type="text" path="timeslotId" id="timeslotId" class="form-control input-sm"/>
                                     <div class="has-error">
                                         <form:errors path="courseId" class="help-inline"/>
                                     </div>

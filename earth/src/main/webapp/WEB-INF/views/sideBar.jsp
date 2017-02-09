@@ -27,7 +27,7 @@
                         <li><a href="<c:url value="/user/list"/>"><i class="fa fa-circle-o"></i>Users List</a></li>
                     </ul>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/user/attendance"/>"><i class="fa fa-circle-o"></i>Users
+                        <li><a href="<c:url value="/attendance/attendanceList"/>"><i class="fa fa-circle-o"></i>Students
                             Attendance</a></li>
                     </ul>
                     <ul class="treeview-menu">
@@ -82,14 +82,14 @@
             <sec:authorize access="hasRole('STUDENT')">
                 <li class="treeview">
                     <a href="/user/userDashbord">
-                        <i class="fa fa-user-md"></i> <span>My Courses</span> <i
+                        <i class="fa fa-user-md"></i> <span>My Informations</span> <i
                             class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/course/list"/>"><i class="fa fa-circle-o"></i>Course List</a></li>
+                        <li><a href="<c:url value="/attendance/myAttendace-${loggedinuser}"/>"><i class="fa fa-circle-o"></i>My Attendance List</a></li>
                     </ul>
                     <ul class="treeview-menu">
-                        <li><a href="<c:url value="/user/attendance"/>"><i class="fa fa-circle-o"></i>Attendance</a></li>
+                        <li><a href="<c:url value="/course/courseListList"/>"><i class="fa fa-circle-o"></i>My Courses</a></li>
                     </ul>
                     <ul class="treeview-menu">
                         <li><a href="<c:url value="/user/update"/>"><i class="fa fa-circle-o"></i>Update profile</a></li>
