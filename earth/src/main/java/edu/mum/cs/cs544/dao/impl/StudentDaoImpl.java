@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("studentDao")
+@Repository
 public class StudentDaoImpl  extends  AbstractDao<Integer, Student> implements StudentDao {
 
     //harcoding
