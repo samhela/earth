@@ -63,7 +63,7 @@ public class CourseController {
         return "redirect:/course/courseList";
     }
 
-<<<<<<< HEAD
+
     @RequestMapping(value = "/user/courseGrid", method = RequestMethod.GET, produces = {"application/json"})
     @ResponseBody
     public CourseResponse listCourses() {
@@ -74,13 +74,13 @@ public class CourseController {
         response.setRows(courses);
         return response;
     }
-=======
+
     @RequestMapping(value = { "/delete-course/{courseId}" }, method = RequestMethod.GET)
 	public String deleteUser(@PathVariable String courseId) {
 		courseService.deleteCourse(courseId);
 		return "redirect:/course/courseList";
 	}
->>>>>>> origin/master
+
 
     @RequestMapping(value="/edit-course/{id}",method=RequestMethod.GET)
     public String editCourse(@PathVariable("id") String id, Model model){
